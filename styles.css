@@ -277,28 +277,48 @@ nav ul li a:hover {
     margin-right: 270px;
 }
 #agents #agents-wrapper{
-    margin-left: 60px;
+    margin-left: 500px;
+    margin-right: 500px;
     background-color: rgba(255, 255, 255, 0.3);
-    height: 550px;
+    height: 625px;
     width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Ensure the container's children align to the start */
+    justify-content: flex-start; 
     align-items: center;
 }
 #agents #agents-wrapper h3{
     font-family: 'Anton', sans-serif;
     font-size: 60px;
     color: white;
-    margin-left: auto;
+    margin-left: 20px;
     margin-right: 20px;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+#agents #agents-wrapper #swiper-wrapper{
+    display: flex;
+}
+#agents #agents-wrapper #swiper-wrapper button {
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 120px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+}
+#agents #agents-wrapper #swiper-wrapper button:hover {
+    color:#1B1A21
 }
 #agents #agents-wrapper #swiper-wrapper img{
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
+    width: 300px;
+    height: 500px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 #weapons{
     height: 950px;
@@ -355,7 +375,7 @@ nav ul li a:hover {
     width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Ensure the container's children align to the start */
+    justify-content: flex-start; 
     align-items: center;
 }
 #weapons #weapons-wrapper h3{
@@ -379,6 +399,13 @@ nav ul li a:hover {
     transition: color 0.3s ease;
     background: none;
     border: none;
+}
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button button {
+    width: auto;
+    color: #1B1A21;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
 }
 #weapons #weapons-wrapper #swiper-wrapper button:hover {
     color: white;
