@@ -77,26 +77,28 @@
             <div class="wrapper">
                 <div id="options-wrapper">
                     <ul>
-                        <li><button><a href="#"></a>SIDEARMS</button></li>
-                        <li><button><a href="#"></a>SMGS</button></li>
-                        <li><button><a href="#"></a>SHOTGUNS</button></li>
-                        <li><button><a href="#"></a>RIFLES</button></li>
-                        <li><button><a href="#"></a>SNIPER RIFLES</button></li>
-                        <li><button><a href="#"></a>MACHINE GUNS</button></li>
+                        <li><button id="sidearms-btn">SIDEARMS</button></li>
+                        <li><button id="smgs-btn">SMGS</button></li>
+                        <li><button id="shotguns-btn">SHOTGUNS</button></li>
+                        <li><button id="rifles-btn">RIFLES</button></li>
+                        <li><button id="sniper-rifles-btn">SNIPER RIFLES</button></li>
+                        <li><button id="machine-guns-btn">MACHINE GUNS</button></li>
                     </ul>
                 </div>
                 <div id="weapons-wrapper">
-                    <h3>CLASSIC</h3>
+                    <h3 id="weapon-title">CLASSIC</h3>
                     <div id="swiper-wrapper">
-                        <button>&lt;</button>
-                            <div id="weapon-button">
-                                <button><img src="img/classic.webp"></button>
-                            </div>
-                        <button>&gt;</button>
+                        <button id="prev-btn">&lt;</button>
+                        <div id="weapon-button">
+                            <button><img id="weapon-img" src="img/classic.webp" alt="Weapon"></button>
+                            <img id="new-weapon-img" src="img/gunshot.png" alt="New Weapon" style="display: none; position: absolute;" />
+                            <img id="weapon-img-firing" src="img/gunshot.png" alt="New Weapon" style="display: none; position: absolute;" />
+                        </div>                        
+                        <button id="next-btn">&gt;</button>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>        
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <script src="script.js"></script>
     </body>

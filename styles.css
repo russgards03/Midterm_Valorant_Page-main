@@ -400,6 +400,9 @@ nav ul li a:hover {
     background: none;
     border: none;
 }
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button {
+    position: relative; /* Ensure that the new image is positioned relative to this container */
+}
 #weapons #weapons-wrapper #swiper-wrapper #weapon-button button {
     width: auto;
     color: #1B1A21;
@@ -409,4 +412,33 @@ nav ul li a:hover {
 }
 #weapons #weapons-wrapper #swiper-wrapper button:hover {
     color: white;
+}
+
+/* Weapon image rotation animation */
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img {
+    transition: transform 0.3s; /* Smooth transition for rotation */
+    position: relative;
+}
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img-firing {
+    animation: firingAnimation 0.2s infinite; /* Animation for a blinking effect */
+    transform: rotate(10deg); /* Example: Slightly enlarge the image */
+}
+
+@keyframes firingAnimation {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img.rotate {
+    transform: rotate(10deg); /* Full 360-degree rotation */
+    z-index: 1;
+}
+
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button #new-weapon-img {
+    width: 200px; /* Adjust size as needed */
+    position: absolute;
+    top: -40px; /* Align top with the first image */
+    left: -160px; /* Positioned left of the weapon image (adjust based on size of both images) */
+    display: none; /* Initially hidden */
 }
