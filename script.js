@@ -1,110 +1,160 @@
 var swiper = new Swiper('.swiper-container', {
-    loop: true, // Enables continuous loop mode
+    loop: true, 
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    slidesPerView: 3, // Show 3 slides at a time
-    centeredSlides: true, // Center the active slide
-    spaceBetween: 30,
+    slidesPerView: 3, 
+    centeredSlides: true, 
+    spaceBetween: 500,
     autoplay: {
-        delay: 3000, // Auto-slide every 3 seconds
+        delay: 3000, 
         disableOnInteraction: false,
     },
 });
 
-const weaponImg = document.getElementById('weapon-img');
-const newWeaponImg = document.getElementById('new-weapon-img'); // The second image
-let currentSound = new Audio();
-const weaponTitle = document.getElementById('weapon-title');
-const buttons = document.querySelectorAll('#options-wrapper ul li button');
-
-const weapons = {
-    'sidearms-btn': { src: 'img/classic.webp', title: 'CLASSIC', sound: 'audio/classic.mp3' },
-    'smgs-btn': { src: 'img/spectre.webp', title: 'SPECTRE', sound: 'sounds/spectre.mp3' },
-    'shotguns-btn': { src: 'img/bucky.webp', title: 'BUCKY', sound: 'sounds/bucky.mp3' },
-    'rifles-btn': { src: 'img/vandal.webp', title: 'VANDAL', sound: 'sounds/vandal.mp3' },
-    'sniper-rifles-btn': { src: 'img/operator.webp', title: 'OPERATOR', sound: 'sounds/operator.mp3' },
-    'machine-guns-btn': { src: 'img/odin.webp', title: 'ODIN', sound: 'sounds/odin.mp3' }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     const weaponImg = document.getElementById('weapon-img');
     const newWeaponImg = document.getElementById('new-weapon-img');
-    let currentSound = new Audio(); // Create an empty audio object to be updated later
+    let currentSound = new Audio(); 
     const weaponTitle = document.getElementById('weapon-title');
     const buttons = document.querySelectorAll('#options-wrapper ul li button');
+    const range = document.querySelector('#weapons #damage-wrapper');
+
+    document.querySelector('#sidearms-btn').addEventListener('click', () => updateWeapon('sidearms-btn'));
+    document.querySelector('#smgs-btn').addEventListener('click', () => updateWeapon('smgs-btn'));
+    document.querySelector('#shotguns-btn').addEventListener('click', () => updateWeapon('shotguns-btn'));
+    document.querySelector('#rifles-btn').addEventListener('click', () => updateWeapon('rifles-btn'));
+    document.querySelector('#sniper-rifles-btn').addEventListener('click', () => updateWeapon('sniper-rifles-btn'));
+    document.querySelector('#machine-guns-btn').addEventListener('click', () => updateWeapon('machine-guns-btn'));
 
     currentSound.play();
     let firingInterval;
+    let isFiring = false;  // Flag to control firing state
     
-    // Define weapon images, titles, and sounds
     const weapons = {
-        'sidearms-btn': { src: 'img/classic.webp', title: 'CLASSIC', sound: 'audio/classic.mp3' },
-        'smgs-btn': { src: 'img/spectre.webp', title: 'SPECTRE', sound: 'audio/spectre.mp3' },
-        'shotguns-btn': { src: 'img/bucky.webp', title: 'BUCKY', sound: 'audio/bucky.mp3' },
-        'rifles-btn': { src: 'img/vandal.webp', title: 'VANDAL', sound: 'audio/vandal.mp3' },
-        'sniper-rifles-btn': { src: 'img/operator.webp', title: 'OPERATOR', sound: 'audio/operator.mp3' },
-        'machine-guns-btn': { src: 'img/odin.webp', title: 'ODIN', sound: 'audio/odin.mp3' }
+        'sidearms-btn': { 
+            src: 'img/sheriff.webp', 
+            title: 'SHERIFF', 
+            sound: 'audio/sheriff.mp3',
+            damage: {
+                range1: { head: 159, body: 55, legs: 46 },
+                range2: { head: 145, body: 50, legs: 42 }
+            } 
+        },
+        'smgs-btn': { 
+            src: 'img/spectre.webp', 
+            title: 'SPECTRE', 
+            sound: 'audio/spectre.mp3',
+            damage: {
+                range1: { head: 66, body: 22, legs: 18 },
+                range2: { head: 60, body: 20, legs: 17 }
+            } 
+         },
+        'shotguns-btn': { 
+            src: 'img/bucky.webp', 
+            title: 'BUCKY', 
+            sound: 'audio/bucky.mp3',
+            damage: {
+                range1: { head: 26, body: 13, legs: 11 },
+                range2: { head: 18, body: 9, legs: 7 }
+            }  },
+        'rifles-btn': { 
+            src: 'img/vandal.webp', 
+            title: 'VANDAL', 
+            sound: 'audio/vandal.mp3',
+            damage: {
+                range1: { head: 160, body: 40, legs: 34 },
+                range2: { head: 160, body: 40, legs: 34 }
+            }  },
+        'sniper-rifles-btn': { 
+            src: 'img/operator.webp', 
+            title: 'OPERATOR', 
+            sound: 'audio/operator.mp3',
+            damage: {
+                range1: { head: 255, body: 255, legs: 120 },
+                range2: { head: 255, body: 255, legs: 120 }
+            }  },
+        'machine-guns-btn': { 
+            src: 'img/odin.webp', 
+            title: 'ODIN', 
+            sound: 'audio/odin.mp3',
+            damage: {
+                range1: { head: 95, body: 38, legs: 32 },
+                range2: { head: 77, body: 31, legs: 26 }
+            }  }
     };
 
+    function updateWeapon(weaponKey) {
+        const weapon = weapons[weaponKey];
+    
+        if (weapon) {
+            // Update weapon image
+            const weaponImg = document.querySelector('#weapon-img');
+            weaponImg.src = weapon.src;
+    
+            // Update weapon title
+            const weaponTitle = document.querySelector('#weapon-title');
+            weaponTitle.textContent = weapon.title;
+    
+            // Update damage details
+            const damageWrapper = document.querySelector('#damage-wrapper');
+            damageWrapper.querySelector('#first-range-wrapper h4:nth-child(2)').textContent = weapon.damage.range1.head;
+            damageWrapper.querySelector('#first-range-wrapper h4:nth-child(3)').textContent = weapon.damage.range1.body;
+            damageWrapper.querySelector('#first-range-wrapper h4:nth-child(4)').textContent = weapon.damage.range1.legs;
+    
+            damageWrapper.querySelector('#second-range-wrapper h4:nth-child(2)').textContent = weapon.damage.range2.head;
+            damageWrapper.querySelector('#second-range-wrapper h4:nth-child(3)').textContent = weapon.damage.range2.body;
+            damageWrapper.querySelector('#second-range-wrapper h4:nth-child(4)').textContent = weapon.damage.range2.legs;
+        }
+    }
+
     function startFiring() {
+        isFiring = true;
         currentSound.play();
         weaponImg.classList.add('firing');
         firingInterval = setInterval(() => {
-            currentSound.currentTime = 0; // Reset sound to the beginning
-            currentSound.play();
-        }, 200); // Adjust the interval for the desired firing rate
+            if (isFiring) {  // Only play if still firing
+                currentSound.currentTime = 0;
+                currentSound.play();
+            }
+        }, 200); 
     }
 
-    // Function to stop firing sound loop
     function stopFiring() {
+        isFiring = false; // Prevent new sounds from being played
         clearInterval(firingInterval);
-        currentSound.currentTime = 0; // Reset sound to the beginning
-         weaponImg.classList.remove('firing');
+        weaponImg.classList.remove('firing');
     }
 
-    // Add event listeners for mousedown and mouseup
     weaponImg.addEventListener('mousedown', startFiring);
-    weaponImg.addEventListener('mouseup', stopFiring);
+    
+    // Listen globally for 'mouseup' to ensure firing stops even if mouse is released outside the image
+    window.addEventListener('mouseup', stopFiring);
     weaponImg.addEventListener('mouseleave', stopFiring);
 
-    // Add click event listener to play sound and rotate the image
     weaponImg.addEventListener('click', function () {
-
-        // Check if the 'rotate' class is already applied
         if (!weaponImg.classList.contains('rotate')) {
-            // Add the 'rotate' class to initiate the rotation
             weaponImg.classList.add('rotate');
-
-            // Show the new image
             newWeaponImg.style.display = 'block';
-
-            // Remove the class after the rotation is complete
             setTimeout(() => {
                 weaponImg.classList.remove('rotate');
-                newWeaponImg.style.display = 'none'; // Hide the new image after rotation
-            }, 200); // Match the CSS transition duration (1 second)
+                newWeaponImg.style.display = 'none'; 
+            }, 200);
         }
     });
 
-    // Add click event listeners to weapon buttons
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to the clicked button
             button.classList.add('active');
-
-            // Update weapon image, title, and sound
             const weapon = weapons[button.id];
             weaponImg.src = weapon.src;
             weaponTitle.textContent = weapon.title;
-            currentSound.src = weapon.sound; // Update the current sound to match the weapon
+            currentSound.src = weapon.sound; 
         });
     });
 
-    // Optionally, set a default active button
+    // Simulate a click on one of the weapon buttons to initialize the first weapon
     document.getElementById('sidearms-btn').click();
 });
