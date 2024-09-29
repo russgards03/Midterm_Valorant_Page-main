@@ -134,7 +134,7 @@ nav ul li a:hover {
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 60px;
-    margin-left: 270px;
+    margin-left: 180px;
     margin-right: 270px;
 }
 #overview .wrapper #text-wrapper{
@@ -143,8 +143,8 @@ nav ul li a:hover {
 #overview .wrapper #text-wrapper p{
     color: white;
     margin: 10px;
-    font-family: 'Alef', sans-serif;
-    font-size: 20px;
+    font-family: 'Impact', sans-serif;
+    font-size: 40px;
 }
 #overview .wrapper #img-wrapper{
     width: 60%;
@@ -152,6 +152,7 @@ nav ul li a:hover {
 #overview .wrapper #img-wrapper img {
     width: 100%;
     height: auto;
+    margin-left: 100px;
     mask-image:
     linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 60%);
 }
@@ -282,13 +283,13 @@ nav ul li a:hover {
 #gameplay .wrapper #text-wrapper p{
     color: #1B1A21;
     margin: 10px;
-    font-family: 'Alef', sans-serif;
+    font-family: 'Impact', sans-serif;
     font-size: 20px;
 }
 #agents{
-    height: 950px;
+    height: 1650px;
     width: 100%;
-    background-image: url('img/walking.gif');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url('img/chamberbg.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -315,25 +316,39 @@ nav ul li a:hover {
 }
 #agents .wrapper #cards-wrapper {
     padding: 20px;
-    background-color: red;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
 #agents .wrapper #cards-wrapper #card_agent{
     width: 350px;
-    background-color: blue;
+    height: 530px;
+    background-color: rgba(0, 0, 0, 0.815);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 40px;
 }
 #agents .wrapper #cards-wrapper #card_agent #container{
     padding: 20px;
 }
-#agents .wrapper #cards-wrapper #card_agent #container img{
-    height: 200px;
+#agents .wrapper #cards-wrapper #card_agent #container h3{
+    color: white;
+    font-size: 40px;
+    font-family: 'Anton', sans-serif;
 }
+#agents .wrapper #cards-wrapper #card_agent #container img{
+    height: 430px;
+    margin: auto;
+}
+
+
+
+
+
+
+
 #weapons{
     height: 1200px;
     width: 100%;
@@ -446,7 +461,7 @@ nav ul li a:hover {
 #weapons #weapons-wrapper #swiper-wrapper #weapon-button button {
     width: auto;
     color: #ffffff;
-    cursor: pointer;
+    cursor: crosshair;
     transition: color 0.3s ease;
     background: none;
 }
@@ -458,15 +473,28 @@ nav ul li a:hover {
 #weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img {
     transition: transform 0.3s; /* Smooth transition for rotation */
     position: relative;
-    height: auto; 
-    width: auto;  
 }
 #weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img-firing {
-    animation: firingAnimation 0.2s infinite; /* Animation for a blinking effect */
-    transform: rotate(10deg); /* Example: Slightly enlarge the image */
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to the parent container */
+    top: 50%; /* Adjust as necessary */
+    left: 50%; /* Center it */
+    transform: translate(-50%, -50%); /* Center it */
+    z-index: 10; /* Make sure it appears above other elements */
 }
 
 @keyframes firingAnimation {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.firing {
+    animation: firingAnimation 0.1s infinite alternate; /* Adjust the duration as needed */
+    transform: rotate(10deg);
+}
+
+@keyframes firingAnimation2 {
     0% { opacity: 1; }
     50% { opacity: 0.5; }
     100% { opacity: 1; }

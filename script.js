@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const weapons = {
         'sidearms-btn': { 
-            src: 'img/sheriff.webp', 
+            src: 'img/Sheriff_Kingdom2.png', 
             title: 'SHERIFF', 
             sound: 'audio/sheriff.mp3',
             damage: {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } 
         },
         'smgs-btn': { 
-            src: 'img/spectre.webp', 
+            src: 'img/Spectre_URF_v2.png', 
             title: 'SPECTRE', 
             sound: 'audio/spectre.mp3',
             damage: {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } 
          },
         'shotguns-btn': { 
-            src: 'img/bucky.webp', 
+            src: 'img/Bucky_Oni.png', 
             title: 'BUCKY', 
             sound: 'audio/bucky.mp3',
             damage: {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 range2: { head: 18, body: 9, legs: 7 }
             }  },
         'rifles-btn': { 
-            src: 'img/vandal.webp', 
+            src: 'img/Vandal_Dragon.png', 
             title: 'VANDAL', 
             sound: 'audio/vandal.mp3',
             damage: {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 range2: { head: 160, body: 40, legs: 34 }
             }  },
         'sniper-rifles-btn': { 
-            src: 'img/operator.webp', 
+            src: 'img/Operator_Cyberpunk2.png', 
             title: 'OPERATOR', 
             sound: 'audio/operator.mp3',
             damage: {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 range2: { head: 255, body: 255, legs: 120 }
             }  },
         'machine-guns-btn': { 
-            src: 'img/odin.webp', 
+            src: 'img/Odin_HypeBeast2.png', 
             title: 'ODIN', 
             sound: 'audio/odin.mp3',
             damage: {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateWeapon(weaponKey) {
         const weapon = weapons[weaponKey];
-    
+        
         if (weapon) {
             // Update weapon image
             const weaponImg = document.querySelector('#weapon-img');
@@ -106,13 +106,46 @@ document.addEventListener('DOMContentLoaded', () => {
             damageWrapper.querySelector('#second-range-wrapper h4:nth-child(2)').textContent = weapon.damage.range2.head;
             damageWrapper.querySelector('#second-range-wrapper h4:nth-child(3)').textContent = weapon.damage.range2.body;
             damageWrapper.querySelector('#second-range-wrapper h4:nth-child(4)').textContent = weapon.damage.range2.legs;
+    
+            // Dynamic margin and padding based on the weapon
+            const swiperContainer = document.querySelector('.swiper-container');
+            switch (weaponKey) {
+                case 'sidearms-btn':
+                    swiperContainer.style.margin = '20px';
+                    swiperContainer.style.padding = '10px';
+                    break;
+                case 'smgs-btn':
+                    swiperContainer.style.marginTop = '30px';
+                    swiperContainer.style.padding = '15px';
+                    break;
+                case 'shotguns-btn':
+                    swiperContainer.style.margin = '40px';
+                    swiperContainer.style.padding = '20px';
+                    break;
+                case 'rifles-btn':
+                    swiperContainer.style.margin = '50px';
+                    swiperContainer.style.padding = '25px';
+                    break;
+                case 'sniper-rifles-btn':
+                    swiperContainer.style.margin = '60px';
+                    swiperContainer.style.padding = '30px';
+                    break;
+                case 'machine-guns-btn':
+                    swiperContainer.style.margin = '70px';
+                    swiperContainer.style.padding = '35px';
+                    break;
+                default:
+                    swiperContainer.style.margin = '0px';
+                    swiperContainer.style.padding = '0px';
+                    break;
+            }
         }
     }
 
     function startFiring() {
         isFiring = true;
         currentSound.play();
-        weaponImg.classList.add('firing');
+        weaponImg.classList.add('firing'); // Add firing class for animation
         firingInterval = setInterval(() => {
             if (isFiring) {  // Only play if still firing
                 currentSound.currentTime = 0;
@@ -124,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopFiring() {
         isFiring = false; // Prevent new sounds from being played
         clearInterval(firingInterval);
-        weaponImg.classList.remove('firing');
+        weaponImg.classList.remove('firing'); // Remove firing class to stop animation
     }
 
     weaponImg.addEventListener('mousedown', startFiring);
