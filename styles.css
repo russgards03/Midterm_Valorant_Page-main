@@ -343,12 +343,6 @@ nav ul li a:hover {
     margin: auto;
 }
 
-
-
-
-
-
-
 #weapons{
     height: 1200px;
     width: 100%;
@@ -470,31 +464,21 @@ nav ul li a:hover {
 }
 
 /* Weapon image rotation animation */
-#weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img {
-    transition: transform 0.3s; /* Smooth transition for rotation */
-    position: relative;
-}
-#weapons #weapons-wrapper #swiper-wrapper #weapon-button #weapon-img-firing {
-    display: none; /* Hidden by default */
-    position: absolute; /* Positioned relative to the parent container */
-    top: 50%; /* Adjust as necessary */
-    left: 50%; /* Center it */
-    transform: translate(-50%, -50%); /* Center it */
-    z-index: 10; /* Make sure it appears above other elements */
-}
-
-@keyframes firingAnimation {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+#weapons #weapons-wrapper #swiper-wrapper #weapon-button #new-weapon-img {
+    width: 200px; 
+    position: absolute;
+    top: -40px; 
+    left: -160px; 
+    display: none; /* Initially hidden */
+    z-index: 2; 
 }
 
 .firing {
-    animation: firingAnimation 0.1s infinite alternate; /* Adjust the duration as needed */
-    transform: rotate(10deg);
+    animation: firingAnimation 0.2s infinite alternate; 
+    transform: rotate(10deg); /* Add rotation as part of the firing */
+    z-index: 1;
 }
-
-@keyframes firingAnimation2 {
+@keyframes firingAnimation {
     0% { opacity: 1; }
     50% { opacity: 0.5; }
     100% { opacity: 1; }
@@ -512,6 +496,7 @@ nav ul li a:hover {
     left: -160px; /* Positioned left of the weapon image (adjust based on size of both images) */
     display: none; /* Initially hidden */
 }
+
 #weapons #damage-wrapper{
     margin-left: 10px;
     background-color: rgba(255, 255, 255, 0.1);

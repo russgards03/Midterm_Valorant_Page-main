@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     swiperContainer.style.padding = '10px';
                     break;
                 case 'smgs-btn':
-                    swiperContainer.style.marginTop = '30px';
+                    swiperContainer.style.marginTop = '3000px';
                     swiperContainer.style.padding = '15px';
                     break;
                 case 'shotguns-btn':
@@ -141,15 +141,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+    
 
     function startFiring() {
         isFiring = true;
+        weaponImg.classList.add('firing'); 
+        newWeaponImg.style.display = 'block';
         currentSound.play();
-        weaponImg.classList.add('firing'); // Add firing class for animation
+        weaponImg.classList.add('firing');
         firingInterval = setInterval(() => {
             if (isFiring) {  // Only play if still firing
                 currentSound.currentTime = 0;
                 currentSound.play();
+                newWeaponImg.style.display = 'block';
             }
         }, 200); 
     }
@@ -157,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopFiring() {
         isFiring = false; // Prevent new sounds from being played
         clearInterval(firingInterval);
-        weaponImg.classList.remove('firing'); // Remove firing class to stop animation
+        weaponImg.classList.remove('firing');
     }
 
     weaponImg.addEventListener('mousedown', startFiring);
