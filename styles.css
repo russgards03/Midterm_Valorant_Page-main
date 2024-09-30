@@ -108,66 +108,6 @@ nav ul li a:hover {
     color: #1B1A21;
     border-color: #1B1A21;
 }
-#overview {
-    height: 950px;
-    width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), url('img/omen.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: relative;
-}
-#overview h1{
-    padding-top: 100px;
-    padding-left: 160px;
-    font-family: 'Anton', sans-serif;
-    color: white;
-    font-size: 80px;
-    animation: animateGameplayTitle 1.5s;
-}
-@keyframes animateGameplayTitle {
-    0% {opacity:0; padding-left:260px;}
-    100% {opacity: 1; padding-left:160px}
-}
-#overview .wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 60px;
-    margin-left: 180px;
-    margin-right: 270px;
-}
-#overview .wrapper #text-wrapper{
-    width: 40%;
-}
-#overview .wrapper #text-wrapper p{
-    color: white;
-    margin: 10px;
-    font-family: 'Impact', sans-serif;
-    font-size: 40px;
-}
-#overview .wrapper #img-wrapper{
-    width: 60%;
-}
-#overview .wrapper #img-wrapper img {
-    width: 100%;
-    height: auto;
-    margin-left: 100px;
-    mask-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 60%);
-}
-#overview #text-wrapper span {
-    display: inline-block;
-    color: white;
-    transition: transform 0.1s ease, color 0.1s ease;
-}
-
-#overview #text-wrapper span:hover {
-    color: #FF4655;
-    transform: translateY(-5px);
-}
-
-
 #gameplay{
     height: 950px;
     width: 100%;
@@ -178,7 +118,7 @@ nav ul li a:hover {
     position: relative;
 }
 #gameplay h1{
-    padding-top: 100px;
+    padding-top: auto;
     padding-left: 160px;
     font-family: 'Anton', sans-serif;
     color: #1B1A21;
@@ -286,6 +226,105 @@ nav ul li a:hover {
     font-family: 'Impact', sans-serif;
     font-size: 20px;
 }
+#overview {
+    height: 700px;
+    width: auto;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('img/valo_banner2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+#overview .wrapper{
+    margin-top: auto;
+    margin-left: 180px;
+    margin-right: 270px;
+}
+#overview .wrapper #text-wrapper{
+    width: 40%;
+}
+#overview .wrapper #text-wrapper h1{
+    font-family: 'Anton', sans-serif;
+    padding-top: 20px;
+    padding-left: 80px;
+    color: rgb(24, 23, 23);
+    font-size: 120px;
+}
+#overview .wrapper #text-wrapper h2{
+    font-family: 'Anton', sans-serif;
+    margin-top: 1px;
+    padding-left: 85px;
+    padding-bottom: 10px;
+    color: rgb(24, 23, 23);
+    font-size: 60px;
+}
+#overview .wrapper #text-wrapper h3{
+    font-family: 'Anton', sans-serif;
+    margin-top: 1px;
+    padding-left: 85px;
+    color: rgb(24, 23, 23);
+    font-size: 40px;
+}
+#overview .wrapper #text-wrapper #skill-1{
+    font-family: 'Anton', sans-serif;
+    padding-top: 20px;
+    padding-left: 85px;
+    color: rgb(24, 23, 23);
+    font-size: 30px;
+}
+#overview .wrapper #text-wrapper #skill-1 img{
+    width: 40px;
+    height: auto;
+    margin-left: 15px;
+}
+#overview .wrapper #text-wrapper #skill-2{
+    font-family: 'Anton', sans-serif;
+    padding-top: 20px;
+    padding-left: 85px;
+    color: rgb(24, 23, 23);
+    font-size: 30px;
+}
+#overview .wrapper #text-wrapper #skill-2 img{
+    width: 40px;
+    height: auto;
+    margin-left: 15px;
+}
+#overview .wrapper #text-wrapper #skill-3{
+    font-family: 'Anton', sans-serif;
+    padding-top: 20px;
+    padding-left: 85px;
+    color: rgb(24, 23, 23);
+    font-size: 30px;
+}
+#overview .wrapper #text-wrapper #skill-3 img{
+    width: 40px;
+    height: auto;
+    margin-left: 40px;
+}
+#overview .wrapper #text-wrapper #skill-4{
+    font-family: 'Anton', sans-serif;
+    padding-top: 20px;
+    padding-left: 85px;
+    color: rgb(24, 23, 23);
+    font-size: 30px;
+}
+#overview .wrapper #text-wrapper #skill-4 img{
+    width: 40px;
+    height: auto;
+    margin-left: 45px;
+}
+#overview .wrapper #img-wrapper{
+    width: auto;
+    margin-left: 10px;
+}
+#overview .wrapper #img-wrapper img {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    mask-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 60%);
+}
+
 #agents{
     height: 1650px;
     width: 100%;
